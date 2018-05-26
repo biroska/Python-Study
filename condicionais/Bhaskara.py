@@ -33,7 +33,7 @@ else:
         x1 = ( -b + math.sqrt( delta ) ) / (2*a)
         x2 = ( -b - math.sqrt( delta ) ) / (2*a)
 
-        if x2 > x1:
+        if x2 < x1:
             temp = x1
             x1 = x2
             x2 = temp
