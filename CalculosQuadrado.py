@@ -9,4 +9,7 @@
 
 lado = input("Digite o valor correspondente ao lado de um quadrado: ")
 
-print("perímetro: ", 4*int(lado)," - área: ",int(lado)**2)
+saida = "perímetro: " + str( 4*int(lado) ) + " - área: " + str( int(lado)**2 )
+
+print(saida)
+

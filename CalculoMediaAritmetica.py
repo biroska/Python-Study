@@ -2,7 +2,7 @@
 #     Introdução à Ciência da Computação com Python Parte 1 
 # Disponível no coursera.
 
-#                                EXERCÍCIO 1 
+#                                EXERCÍCIO 2
 # Faça um programa em Python que receba quatro notas, calcule e imprima a média aritmética.
 
 nota1 = int(input("Digite a primeira nota: "))
@@ -15,5 +15,6 @@ nota4 = int(input("Digite a quarta nota: "))
 
 media = ( nota1 + nota2 + nota3 + nota4) / 4
 
+saida = "A média aritmética é " + str( media )
 
-print("A média aritmética é ", media)
+print( saida )
