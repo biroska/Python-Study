@@ -14,7 +14,14 @@ input = input("Por favor, entre com o número de segundos que deseja converter: 
 
 segundos = int( input )
 
-dias = ( ( segundos // 60 ) // 60 ) // 24
+dias = segundos // 86400
+horas_restantes = segundos % 86400
 
-saida = dias + " dias, " + horas + " horas, " + minutos + " minutos e " + segundos + " segundos."
+horas = horas_restantes // 3600
+segs_restantes = segundos % 3600
+
+minutos = segs_restantes // 60
+segs_restantes_final = segs_restantes % 60
+
+saida = str( dias ) + " dias, " + str( horas ) + " horas, " + str( minutos ) + " minutos e " + str( segs_restantes_final ) + " segundos."
 print( saida )
