@@ -8,12 +8,11 @@
 
 numero = int( input("Digite um número inteiro: ") )
 
-isPrimo = True
 count = 0
 
 divisor = 2
 
-while divisor < 100:
+while divisor < 100 and count <= 1:
 
     if numero % divisor == 0:
         count += 1
