@@ -7,14 +7,17 @@
 # recebido possui ao menos um dígito com um dígito adjacente igual a ele. Caso exista, 
 # imprima "sim"; se não existir, imprima "não".
 
-numero = int( input("Digite um número inteiro: ") )
+strNumero = input("Digite um número inteiro: ")
+numero = int( strNumero )
 
 digitoAnterior = -1000
 proximoDigito = 1
+count = 0
 
 isAdjacente = False
+qtdCaracteres = len( strNumero )
 
-while not isAdjacente and proximoDigito > 0:
+while not isAdjacente and count <= qtdCaracteres:
     
     proximoDigito = numero % 10
 
@@ -23,6 +26,8 @@ while not isAdjacente and proximoDigito > 0:
     else:
         digitoAnterior = proximoDigito
         numero = numero // 10
+
+    count = count + 1
     
 
 if isAdjacente:
