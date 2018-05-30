@@ -17,8 +17,8 @@ count = 0
 isAdjacente = False
 qtdCaracteres = len( strNumero )
 
-while not isAdjacente and count <= qtdCaracteres:
-    
+while not isAdjacente and count < qtdCaracteres:
+
     proximoDigito = numero % 10
 
     if proximoDigito == digitoAnterior:
