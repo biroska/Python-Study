@@ -11,30 +11,15 @@ numero = int( input("Digite um número inteiro: ") )
 isPrimo = True
 count = 0
 
+divisor = 2
 
-if numero % 2 == 0:
-    count += 1
+while divisor < 100:
 
-if numero % 3 == 0:
-    count += 1
+    if numero % divisor == 0:
+        count += 1
 
-if numero % 5 == 0:
-    count += 1
+    divisor += 1
 
-if numero % 7 == 0:
-    count += 1
-
-if numero % 11 == 0:
-    count += 1
-
-if numero % 13 == 0:
-    count += 1
-
-if numero % 17 == 0:
-    count += 1
-
-if numero % 19 == 0:
-    count += 1
 
 if count == 1:
     print("primo")
