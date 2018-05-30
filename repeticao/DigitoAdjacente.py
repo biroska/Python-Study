@@ -22,6 +22,7 @@ while not isAdjacente and proximoDigito > 0:
         isAdjacente = True
     else:
         digitoAnterior = proximoDigito
+        numero = numero // 10
     
 
 if isAdjacente:
