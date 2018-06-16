@@ -227,4 +227,4 @@ def menuPrincipal():
         print("Voce escolheu um campeonato!")
         campeonato()
 
-menuPrincipal()
+ menuPrincipal()
