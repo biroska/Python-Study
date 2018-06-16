@@ -58,10 +58,15 @@
 #
 #
 
+def valida_config_pecas( qtdPecas, limitePecasRetirar ):
+    if ( limitePecasRetirar > qtdPecas ):
+        return False
 
-def computadorInicia( n, m ):
+    return True
 
-    if ( (m+1) % n == 0 ):
+def computadorInicia( qtdPecas, limitePecasRetirar  ):
+
+    if ( qtdPecas % ( limitePecasRetirar + 1 ) == 0 ):
         return False
     else:
         return True
@@ -71,12 +76,12 @@ def computadorInicia( n, m ):
 # informe sua jogada e verifica se o valor informado é válido. Se o valor informado for válido,
 #  a função deve devolvê-lo; caso contrário, deve solicitar novamente ao usuário que informe uma jogada válida.
 #
-def  usuario_escolhe_jogada ( n, m ):
+def  usuario_escolhe_jogada ( pecasRestantes, limitePecasRetirar ):
 
     jogada = int( input( "Quantas peças você vai tirar?" ) )
     quebraLinha()
 
-    while ( jogada > m or jogada < 1 ):
+    while ( jogada > pecasRestantes or jogada < 1 or jogada > limitePecasRetirar ):
         print("Oops! Jogada inválida! Tente de novo.")
         quebraLinha()
         jogada = int( input( "Quantas peças você vai tirar?" ) )
@@ -88,26 +93,26 @@ def  usuario_escolhe_jogada ( n, m ):
 # os números n e m descritos acima e devolve um inteiro correspondente à
 # próxima jogada do computador de acordo com a estratégia vencedora.
 #
-def computador_escolhe_jogada( n, m ):
+def computador_escolhe_jogada ( pecasRestantes, limitePecasRetirar ):
 
-    pecasRestantes = 0
-    qtdPecasRetiradas = 1
+    jogada = 1
+    count = 0
 
-    while ( qtdPecasRetiradas < m ):
+    if ( pecasRestantes <= limitePecasRetirar  ):
+        return pecasRestantes
 
-        pecasRestantes = n - qtdPecasRetiradas
+    while ( jogada > 0 ):
 
-        print("retiradas ", qtdPecasRetiradas )
-        print("restantes ", pecasRestantes )
+        jogada = limitePecasRetirar - count
 
-        if ( pecasRestantes > 0 and ( m +1) % pecasRestantes == 0 ):
-            return qtdPecasRetiradas
+        if ( ( pecasRestantes - jogada ) % ( limitePecasRetirar + 1 ) == 0):
+            return jogada
 
-        qtdPecasRetiradas += 1
+        count += 1
 
     quebraLinha()
 
-    return m
+    return limitePecasRetirar
 
 def imprimeJogada(isComputador, jogada, pecasRestantes ):
 
@@ -124,10 +129,11 @@ def imprimeJogada(isComputador, jogada, pecasRestantes ):
     else:
         textoJogada = textoJogada + "uma peça."
 
-    if (pecasRestantes > 1):
-        textoRestantes = "Agora restam " + str(pecasRestantes) + " peças no tabuleiro."
-    else:
-        textoRestantes = "Agora resta apenas uma peça no tabuleiro."
+    if ( pecasRestantes > 0 ):
+        if (pecasRestantes > 1):
+            textoRestantes = "Agora restam " + str(pecasRestantes) + " peças no tabuleiro."
+        else:
+            textoRestantes = "Agora resta apenas uma peça no tabuleiro."
 
     print( textoJogada )
     print( textoRestantes )
@@ -145,8 +151,13 @@ def partida():
     #  na mesa. Quando a última peça é removida, essa função imprime na tela a mensagem
     # "O computador ganhou!" ou "Você ganhou!" conforme o caso.
     #
-    n = int( input("Quantas peças? ") )
-    m = int( input("Limite de peças por jogada? ") )
+
+    n = int(input("Quantas peças? "))
+    m = int(input("Limite de peças por jogada? "))
+
+    # while ( not valida_config_pecas( n, m) ):
+    #     n = int(input("Quantas peças? "))
+    #     m = int(input("Limite de peças por jogada? "))
 
     quebraLinha()
 
@@ -215,7 +226,5 @@ def menuPrincipal():
     else:
         print("Voce escolheu um campeonato!")
         campeonato()
-
-
 
 menuPrincipal()
